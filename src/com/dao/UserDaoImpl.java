@@ -22,9 +22,9 @@ public class UserDaoImpl implements UserDao{
     }
     public boolean login(String name, String pwd) {
         boolean flag = false;
-        try {
+        try {                   //("select * from user where name='" + name + "' and pwd='" + pwd + "'")
             DBconn.init();
-            ResultSet rs = DBconn.selectSql("select * from user where name='"+name+"' and pwd='"+pwd+"'");
+            ResultSet rs = DBconn.selectSql("select * from user where name=");
             while(rs.next()){
                 if(rs.getString("name").equals(name) && rs.getString("pwd").equals(pwd)){
                     flag = true;

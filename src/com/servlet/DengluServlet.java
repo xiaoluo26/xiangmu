@@ -1,7 +1,6 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dao.UserDao;
 import com.dao.UserDaoImpl;
 
-public class LoginServlet extends HttpServlet {  //需要继承HttpServlet  并重写doGet  doPost方法
+public class DengluServlet extends HttpServlet {  //需要继承HttpServlet  并重写doGet  doPost方法
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);  //将信息使用doPost方法执行   对应jsp页面中的form表单中的method

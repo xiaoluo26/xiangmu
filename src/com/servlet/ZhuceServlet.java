@@ -1,7 +1,6 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,7 @@ import com.dao.UserDao;
 import com.dao.UserDaoImpl;
 import com.entity.User;
 
-public class RegisterServlet extends HttpServlet {
+public class ZhuceServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -32,8 +31,8 @@ public class RegisterServlet extends HttpServlet {
 
         if(ud.register(user)){
             request.setAttribute("username", name);  //向request域中放置参数
-            //request.setAttribute("xiaoxi", "注册成功");
-            request.getRequestDispatcher("/login.jsp").forward(request, response);  //转发到登录页面
+            request.setAttribute("xiaoxi", "注册成功");
+            request.getRequestDispatcher("web/Login.jsp").forward(request, response);  //转发到登录页面
         }else{
 
             response.sendRedirect("index.jsp");//重定向到首页
