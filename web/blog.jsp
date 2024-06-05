@@ -11,6 +11,13 @@
     <title>个人博客</title>
 </head>
 <body>
-欢迎来到博客！
+<a>欢迎来到博客！</a>
+
+<a href="write.jsp">写博客</a>
+
+<div class="music">
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=862098473&auto=1&height=66"></iframe>
+</div>
+
 </body>
 </html>
