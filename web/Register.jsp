@@ -9,7 +9,7 @@
     <title>My JSP 'BB.jsp' starting page</title>
 </head>
 <body >
-<form action="${pageContext.request.contextPath}/ZhuceServlet" method="post" style="padding-top:-700px;">
+<form action="ZhuceServlet" method="post" style="padding-top:-700px;">
     输入用户名:<input name="name" type="text"><br><br>
     输入密码:<input name="pwd" type="password"><br><br>
 

@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao{
         boolean flag = false;
         try {                   //("select * from user where name='" + name + "' and pwd='" + pwd + "'")
             DBconn.init();
-            ResultSet rs = DBconn.selectSql("select * from user where name=");
+            ResultSet rs = DBconn.selectSql("SELECT * FROM user WHERE name='" + name + "'");
             while(rs.next()){
                 if(rs.getString("name").equals(name) && rs.getString("pwd").equals(pwd)){
                     flag = true;
@@ -56,7 +56,7 @@ public class UserDaoImpl implements UserDao{
         }
         return null;
     }
-    public boolean update(int id,String name, String pwd,String sex, String home,String info) {
+    public boolean update(int id,String name, String pwd) {
         boolean flag = false;
         DBconn.init();
         String sql ="update user set name ='"+name
@@ -81,9 +81,6 @@ public class UserDaoImpl implements UserDao{
         return flag;
     }
 
-    @Override
-    public boolean update(int id, String name, String pwd) {
-        return false;
-    }
+
 
 }

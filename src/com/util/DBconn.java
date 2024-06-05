@@ -1,6 +1,11 @@
 package com.util;
 //数据库配置
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
 
 public class DBconn {
     static String url = "jdbc:mysql://localhost:3306/blogsql";
@@ -11,7 +16,7 @@ public class DBconn {
     static PreparedStatement ps =null;
     public static void init(){
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url,username,password);
         } catch (Exception e) {
             System.out.println("init [SQL驱动程序初始化失败！]");

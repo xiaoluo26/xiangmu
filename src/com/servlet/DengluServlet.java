@@ -25,7 +25,7 @@ public class DengluServlet extends HttpServlet {  //需要继承HttpServlet  并
 
         if(ud.login(name, pwd)){
             request.setAttribute("xiaoxi", "欢迎用户"+name); //向request域中放置信息
-            request.getRequestDispatcher("/success.jsp").forward(request, response);//转发到成功页面
+            request.getRequestDispatcher("/blog.jsp").forward(request, response);//转发到成功页面
         }else{
             response.sendRedirect("index.jsp"); //重定向到首页
         }

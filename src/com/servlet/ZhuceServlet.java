@@ -32,7 +32,7 @@ public class ZhuceServlet extends HttpServlet {
         if(ud.register(user)){
             request.setAttribute("username", name);  //向request域中放置参数
             request.setAttribute("xiaoxi", "注册成功");
-            request.getRequestDispatcher("web/Login.jsp").forward(request, response);  //转发到登录页面
+            request.getRequestDispatcher("Login.jsp").forward(request, response);  //转发到登录页面
         }else{
 
             response.sendRedirect("index.jsp");//重定向到首页
