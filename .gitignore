@@ -30,3 +30,6 @@ bin/
 
 ### IDEA ###
 .idea/
+
+### 项目输出 ###
+web/WEB-INF/classes
