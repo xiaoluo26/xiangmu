@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.entity.BlogInfo;
 import com.entity.User;
 import com.util.DBconn;
 
@@ -22,7 +23,7 @@ public class UserDaoImpl implements UserDao{
     }
     public boolean login(String name, String pwd) {
         boolean flag = false;
-        try {                   //("select * from user where name='" + name + "' and pwd='" + pwd + "'")
+        try {
             DBconn.init();
             ResultSet rs = DBconn.selectSql("SELECT * FROM user WHERE name='" + name + "'");
             while(rs.next()){
@@ -36,25 +37,24 @@ public class UserDaoImpl implements UserDao{
         }
         return flag;
     }
-    public List<User> getUserAll() {
-        List<User> list = new ArrayList<User>();
+    public List<BlogInfo> getUserAll() {
+        List<BlogInfo> list = new ArrayList<BlogInfo>();
         try {
             DBconn.init();
-            ResultSet rs = DBconn.selectSql("select * from user");
-            while(rs.next()){
-                User user = new User();
-                user.setId(rs.getInt("id"));
-                user.setName(rs.getString("name"));
-                user.setPwd(rs.getString("pwd"));
-
-                list.add(user);
+            ResultSet rs = DBconn.selectSql("SELECT * FROM BlogInfo");
+            while (rs.next()) {
+                BlogInfo blogInfo = new BlogInfo();
+                blogInfo.setName(rs.getString("name"));
+                blogInfo.setInfo(rs.getString("Info"));
+                blogInfo.setTag(rs.getString("tag"));
+                blogInfo.setDate(rs.getDate("date"));
+                list.add(blogInfo);
             }
             DBconn.closeConn();
-            return list;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return list;
     }
     public boolean update(int id,String name, String pwd) {
         boolean flag = false;
