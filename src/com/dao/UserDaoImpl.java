@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -81,6 +82,15 @@ public class UserDaoImpl implements UserDao{
         return flag;
     }
 
-
+    public boolean addinfo(BlogInfo bloginfo){
+        boolean flag = false;
+        DBconn.init();
+        int i =DBconn.addUpdDel("insert into bloginfo(name,info,tag,date) " + "values('" + bloginfo.getName() + "','" + bloginfo.getInfo() + "','" + bloginfo.getTag() + "','" + bloginfo.getDate() + "')");
+        if(i>0){
+            flag = true;
+        }
+        DBconn.closeConn();
+        return flag;
+    }
 
 }

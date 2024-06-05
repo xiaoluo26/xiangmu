@@ -1,15 +1,45 @@
+import com.entity.User;
+import com.util.DBconn;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 //TIP 要<b>运行</b>代码，请按 <shortcut actionId="Run"/> 或
 // 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
 public class Main {
     public static void main(String[] args) {
-        //TIP 当文本光标位于高亮显示的文本处时按 <shortcut actionId="ShowIntentionActions"/>
-        // 查看 IntelliJ IDEA 建议如何修正。
-        System.out.printf("Hello and welcome!");
+        String url = "jdbc:mysql://localhost:3306/blogsql";
+        String username = "root";
+        String password = "123456";
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps =null;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP 按 <shortcut actionId="Debug"/> 开始调试代码。我们已经设置了一个 <icon src="AllIcons.Debugger.Db_set_breakpoint"/> 断点
-            // 但您始终可以通过按 <shortcut actionId="ToggleLineBreakpoint"/> 添加更多断点。
-            System.out.println("i = " + i);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(url,username,password);
+        } catch (Exception e) {
+            System.out.println("init [SQL驱动程序初始化失败！]");
+            e.printStackTrace();
+        }
+
+        String name = "zhangsan";
+        String pwd = "123456";
+
+        boolean flag = false;
+        try {                   //("select * from user where name='" + name + "' and pwd='" + pwd + "'")
+            DBconn.init();
+            rs = DBconn.selectSql("SELECT * FROM user WHERE name='" + name + "'");
+            while(rs.next()){
+                if(rs.getString("name").equals(name) && rs.getString("pwd").equals(pwd)){
+                    flag = true;
+                }
+            }
+            System.out.println(flag);
+            DBconn.closeConn();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

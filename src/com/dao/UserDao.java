@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.entity.BlogInfo;
@@ -11,4 +12,5 @@ public interface UserDao {
     public List<BlogInfo> getUserAll();//返回用户信息集合
     public boolean delete(int id) ;//根据id删除用户
     public boolean update(int id,String name, String pwd) ;//更新用户信息
+    public boolean addinfo(BlogInfo bloginfo);
 }
