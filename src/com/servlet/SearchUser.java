@@ -15,7 +15,7 @@ import com.dao.UserDaoImpl;
 import com.entity.BlogInfo;
 import com.entity.User;
 
-public class Searchall extends HttpServlet {
+public class SearchUser extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -24,9 +24,9 @@ public class Searchall extends HttpServlet {
             throws ServletException, IOException {
 
         UserDao ud = new UserDaoImpl();
-        //List<User> userAll = ud.getUserAll();
-        List<BlogInfo> blogInfoList = ud.getBloginfoAll(); // 注意变量名修改为blogInfoList
-        request.setAttribute("userAll", blogInfoList); // 将blogInfoList存入request中
-        request.getRequestDispatcher("/blog.jsp").forward(request, response);
+        List<User> userAll = ud.getUserAll();
+
+        request.setAttribute("userAll", userAll); // 将blogInfoList存入request中
+        request.getRequestDispatcher("/system.jsp").forward(request, response);
     }
 }

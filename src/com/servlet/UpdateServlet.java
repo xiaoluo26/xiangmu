@@ -50,7 +50,7 @@ public class UpdateServlet extends HttpServlet {
 
         if (ud.addinfo(bloginfo)) {
             request.setAttribute("addinfo", name);
-            List<BlogInfo> blogInfoList = ud.getUserAll();
+            List<BlogInfo> blogInfoList = ud.getBloginfoAll();
             request.setAttribute("userAll", blogInfoList);
             request.getRequestDispatcher("blog.jsp").forward(request, response);
         } else {

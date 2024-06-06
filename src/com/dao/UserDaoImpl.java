@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao{
         }
         return flag;
     }
-    public List<BlogInfo> getUserAll() {
+    public List<BlogInfo> getBloginfoAll() {
         List<BlogInfo> list = new ArrayList<BlogInfo>();
         try {
             DBconn.init();
@@ -92,6 +92,26 @@ public class UserDaoImpl implements UserDao{
         }
         DBconn.closeConn();
         return flag;
+    }
+
+    public List<User> getUserAll(){
+        List<User> list = new ArrayList<User>();
+        try {
+            DBconn.init();
+            ResultSet rs = DBconn.selectSql("SELECT * FROM user");
+            while (rs.next()) {
+                User user = new User();
+
+                user.setName(rs.getString("name"));
+                user.setPwd(rs.getString("Pwd"));
+
+                list.add(user);
+            }
+            DBconn.closeConn();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
 }

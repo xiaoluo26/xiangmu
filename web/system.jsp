@@ -1,4 +1,4 @@
-<%@ page import="com.entity.BlogInfo" %>
+<%@ page import="com.entity.User" %>
 <%@ page import="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -63,39 +63,26 @@
 </head>
 <body>
 <div class="container">
-    <h1>欢迎来到博客！</h1>
-
-    <button onclick = "window.location.href = 'write.jsp'">写博客</button>
-    <form action="SearchUserServlet" method="post"><input type="submit" value="管理博客用户"></form>
-
-
-    <div class="music">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=862098473&auto=1&height=66"></iframe>
-    </div>
-
+    <h1>博客管理系统！</h1>
 
 
     <div class="neirong">
         <%
-            List<BlogInfo> blogList = (List<BlogInfo>) request.getAttribute("userAll");
-            if (blogList != null && !blogList.isEmpty()) {
-                for (BlogInfo blog : blogList) {
+            List<User> userList = (List<User>) request.getAttribute("userAll");
+            if (userList != null && !userList.isEmpty()) {
+                for (User user : userList) {
         %>
         <div class="blog-post">
-            <h2><%= blog.getName() %></h2>
-            <p><%= blog.getInfo() %></p>
-            <p>标签： <%= blog.getTag() %></p>
-            <p>日期： <%= blog.getDate() %></p>
-            <form action="DeleteServlet" method="post">
-                <input type="hidden" name="id" value=<%=blog.getId()%>>
-                <button type="submit">删除博客</button>
-            </form>
+            <h2>账号:<%= user.getName() %></h2>
+            <p>密码:<%= user.getPwd() %></p>
+
+
         </div>
         <%
             }
         } else {
         %>
-        <p class="no-blog">暂无博客信息。</p>
+        <p class="no-blog">暂无用户信息。</p>
         <%
             }
         %>
