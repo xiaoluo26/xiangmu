@@ -71,9 +71,7 @@
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=862098473&auto=1&height=66"></iframe>
     </div>
 
-    <form action="Searchall">
-        <input type="submit" value="刷新">
-    </form>
+
 
     <div class="neirong">
         <%
@@ -86,6 +84,10 @@
             <p><%= blog.getInfo() %></p>
             <p>标签： <%= blog.getTag() %></p>
             <p>日期： <%= blog.getDate() %></p>
+            <form action="DeleteServlet" method="post">
+                <input type="hidden" name="id" value=<%=blog.getId()%>>
+                <button type="submit">删除博客</button>
+            </form>
         </div>
         <%
             }

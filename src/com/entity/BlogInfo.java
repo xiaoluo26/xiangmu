@@ -3,11 +3,19 @@ package com.entity;
 import java.sql.Date;
 
 public class BlogInfo {
+    private int id;
     private String name;
     private String Info;
     private String tag;
     private Date date;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

@@ -45,6 +45,7 @@ public class UserDaoImpl implements UserDao{
             ResultSet rs = DBconn.selectSql("SELECT * FROM BlogInfo");
             while (rs.next()) {
                 BlogInfo blogInfo = new BlogInfo();
+                blogInfo.setId(rs.getInt("id"));
                 blogInfo.setName(rs.getString("name"));
                 blogInfo.setInfo(rs.getString("Info"));
                 blogInfo.setTag(rs.getString("tag"));
@@ -73,7 +74,7 @@ public class UserDaoImpl implements UserDao{
     public boolean delete(int id) {
         boolean flag = false;
         DBconn.init();
-        String sql = "delete  from user where id="+id;
+        String sql = "delete  from bloginfo where id=" + id;
         int i =DBconn.addUpdDel(sql);
         if(i>0){
             flag = true;

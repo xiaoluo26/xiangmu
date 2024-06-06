@@ -25,7 +25,6 @@ public class DeleteServlet extends HttpServlet {
         UserDao ud = new UserDaoImpl();
 
         if(ud.delete(userId)){
-            request.setAttribute("xiaoxi", "删除成功");
             request.getRequestDispatcher("/Searchall").forward(request, response);
         }else{
             response.sendRedirect("index.jsp");
