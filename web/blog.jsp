@@ -66,7 +66,7 @@
     <h1>欢迎来到博客！</h1>
 
     <button onclick = "window.location.href = 'write.jsp'">写博客</button>
-    <form action="SearchUserServlet" method="post"><input type="submit" value="管理博客用户"></form>
+    <form action="SearchUser" method="post"><input type="submit" value="管理博客用户"></form>
 
 
     <div class="music">

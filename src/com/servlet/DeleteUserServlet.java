@@ -2,8 +2,6 @@ package com.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,10 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dao.UserDao;
 import com.dao.UserDaoImpl;
-import com.entity.BlogInfo;
-import com.entity.User;
 
-public class SearchUser extends HttpServlet {
+public class DeleteUserServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
@@ -23,10 +19,15 @@ public class SearchUser extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String id = request.getParameter("id");
+        int userId = Integer.parseInt(id);
         UserDao ud = new UserDaoImpl();
-        List<User> userAll = ud.getUserAll();
 
-        request.setAttribute("userAll", userAll);
-        request.getRequestDispatcher("/system.jsp").forward(request, response);
+        if(ud.deleteuser(userId)){
+            request.getRequestDispatcher("/SearchUser").forward(request, response);
+        }else{
+            response.sendRedirect("index.jsp");
+        }
     }
+
 }

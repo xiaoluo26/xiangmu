@@ -101,7 +101,7 @@ public class UserDaoImpl implements UserDao{
             ResultSet rs = DBconn.selectSql("SELECT * FROM user");
             while (rs.next()) {
                 User user = new User();
-
+                user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setPwd(rs.getString("Pwd"));
 
@@ -114,4 +114,15 @@ public class UserDaoImpl implements UserDao{
         return list;
     }
 
+    public boolean deleteuser(int id){
+        boolean flag = false;
+        DBconn.init();
+        String sql = "delete  from user where id=" + id;
+        int i =DBconn.addUpdDel(sql);
+        if(i>0){
+            flag = true;
+        }
+        DBconn.closeConn();
+        return flag;
+    }
 }

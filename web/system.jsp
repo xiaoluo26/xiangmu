@@ -75,7 +75,10 @@
         <div class="blog-post">
             <h2>账号:<%= user.getName() %></h2>
             <p>密码:<%= user.getPwd() %></p>
-
+            <form action="DeleteUserServlet" method="post">
+                <input type="hidden" name="id" value=<%=user.getId()%>>
+                <button type="submit">删除用户</button>
+            </form>
 
         </div>
         <%
