@@ -11,7 +11,7 @@
  Target Server Version : 80037 (8.0.37)
  File Encoding         : 65001
 
- Date: 06/06/2024 08:59:24
+ Date: 06/06/2024 09:36:45
 */
 
 SET NAMES utf8mb4;
@@ -22,18 +22,19 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `bloginfo`;
 CREATE TABLE `bloginfo`  (
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `info` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `date` date NOT NULL
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bloginfo
 -- ----------------------------
-INSERT INTO `bloginfo` VALUES ('test', 'testinfo', 'test', '2024-06-05');
-INSERT INTO `bloginfo` VALUES ('3123', '233', '11', '2024-06-06');
-INSERT INTO `bloginfo` VALUES ('1312323', '222222', '111', '2024-06-06');
+INSERT INTO `bloginfo` VALUES (1, 'test', 'testinfo', 'test', '2024-06-05');
+INSERT INTO `bloginfo` VALUES (2, '22222', '3112', '2312', '2024-06-06');
 
 -- ----------------------------
 -- Table structure for user
