@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url("img/preview-0000.jpg");
+            background-image: url("img/02.png");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -103,3 +103,4 @@
 </div>
 </body>
 </html>
+
