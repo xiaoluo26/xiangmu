@@ -2,7 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>登录注册页面</title>
+    <title>管理员登录页面</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,8 +53,8 @@
 </head>
 <body>
 <div class="container">
-    <div class="title">博客登录</div>
-    <form action="DengluServlet" method="post">
+    <div class="title">管理员登录</div>
+    <form action="DengluAdminServlet" method="post">
         <label for="name">用户名：</label><br>
         <input type="text" id="name" name="name"><br>
         <label for="pwd">密码：</label><br>
@@ -62,11 +62,8 @@
         <input type="submit" value="登录" name="Denglu">
         <input type="reset" value="重置"><br>
     </form>
-    <form action="Register.jsp">
-        <input type="submit" value="新用户注册">
-    </form>
-    <form action="AdminLogin.jsp">
-        <input type="submit" value="管理员登录">
+    <form action="Login.jsp">
+        <input type="submit" value="返回">
     </form>
 
 </div>

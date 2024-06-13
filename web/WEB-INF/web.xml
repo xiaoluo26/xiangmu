@@ -22,6 +22,10 @@
         <servlet-class>com.servlet.DengluServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>DengluAdminServlet</servlet-name>
+        <servlet-class>com.servlet.DengluAdminServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ZhuceServlet</servlet-name>
         <servlet-class>com.servlet.ZhuceServlet</servlet-class>
     </servlet>
@@ -52,6 +56,10 @@
     <servlet-mapping><!--servlet类映射配置-->
         <servlet-name>DengluServlet</servlet-name>
         <url-pattern>/DengluServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping><!--servlet类映射配置-->
+        <servlet-name>DengluAdminServlet</servlet-name>
+        <url-pattern>/DengluAdminServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ZhuceServlet</servlet-name>

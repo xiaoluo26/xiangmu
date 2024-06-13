@@ -38,6 +38,24 @@ public class UserDaoImpl implements UserDao{
         }
         return flag;
     }
+
+    public boolean adminlogin(String name,String pwd){
+        boolean flag = false;
+        try {
+            DBconn.init();
+            ResultSet rs = DBconn.selectSql("SELECT * FROM admin WHERE name='" + name + "'");
+            while(rs.next()){
+                if(rs.getString("name").equals(name) && rs.getString("pwd").equals(pwd)){
+                    flag = true;
+                }
+            }
+            DBconn.closeConn();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
     public List<BlogInfo> getBloginfoAll() {
         List<BlogInfo> list = new ArrayList<BlogInfo>();
         try {

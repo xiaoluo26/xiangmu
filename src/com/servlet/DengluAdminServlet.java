@@ -12,7 +12,7 @@ import com.dao.UserDao;
 import com.dao.UserDaoImpl;
 import com.entity.BlogInfo;
 
-public class DengluServlet extends HttpServlet {  //需要继承HttpServlet  并重写doGet  doPost方法
+public class DengluAdminServlet extends HttpServlet {  //需要继承HttpServlet  并重写doGet  doPost方法
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);  //将信息使用doPost方法执行   对应jsp页面中的form表单中的method
@@ -25,11 +25,11 @@ public class DengluServlet extends HttpServlet {  //需要继承HttpServlet  并
 
         UserDao ud = new UserDaoImpl();
 
-        if(ud.login(name, pwd)){
+        if(ud.adminlogin(name, pwd)){
 
             List<BlogInfo> blogInfoList = ud.getBloginfoAll();
             request.setAttribute("userAll", blogInfoList);
-            request.getRequestDispatcher("/blog.jsp").forward(request, response);//转发到成功页面
+            request.getRequestDispatcher("/adminblog.jsp").forward(request, response);//转发到成功页面
         }else{
             response.sendRedirect("index.jsp"); //重定向到首页
         }

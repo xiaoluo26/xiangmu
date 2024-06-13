@@ -66,6 +66,7 @@
     <h1>欢迎来到博客！</h1>
 
     <button onclick = "window.location.href = 'write.jsp'">发布博客</button>
+    <form action="SearchUser" method="post"><input type="submit" value="管理博客用户"></form>
     <button onclick = "window.location.href = 'Login.jsp'">退出登录</button>
 
 
@@ -86,7 +87,10 @@
             <p><%= blog.getInfo() %></p>
             <p>标签： <%= blog.getTag() %></p>
             <p>日期： <%= blog.getDate() %></p>
-
+            <form action="DeleteServlet" method="post">
+                <input type="hidden" name="id" value=<%=blog.getId()%>>
+                <button type="submit">删除博客</button>
+            </form>
         </div>
         <%
             }
