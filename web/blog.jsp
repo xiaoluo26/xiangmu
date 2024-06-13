@@ -59,34 +59,80 @@
         .no-blog {
             text-align: center;
         }
+
+        .tags {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .select-wrapper {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .select-wrapper select {
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>欢迎来到博客！</h1>
 
-    <button onclick = "window.location.href = 'write.jsp'">发布博客</button>
-    <button onclick = "window.location.href = 'Login.jsp'">退出登录</button>
+    <!-- 发布博客按钮 -->
+    <button onclick="window.location.href = 'write.jsp'">发布博客</button>
 
+    <!-- 退出登录按钮 -->
+    <button onclick="window.location.href = 'Login.jsp'">退出登录</button>
 
+    <!-- 音乐播放器 -->
     <div class="music">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=862098473&auto=1&height=66"></iframe>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86"
+                src="//music.163.com/outchain/player?type=2&id=862098473&auto=1&height=66"></iframe>
     </div>
 
-
+    <!-- 标签选择框 -->
+    <div class="select-wrapper">
+        <select id="tagSelect" onchange="filterByTag(this.value)">
+            <option value="all">全部标签</option>
+            <%
+                List<BlogInfo> blogList = (List<BlogInfo>) request.getAttribute("userAll");
+                if (blogList != null && !blogList.isEmpty()) {
+                    Set<String> allTags = new HashSet<>();
+                    for (BlogInfo blog : blogList) {
+                        allTags.add(blog.getTag());
+                    }
+                    for (String tag : allTags) {
+            %>
+            <option value="<%= tag %>"><%= tag %></option>
+            <%
+                    }
+                }
+            %>
+        </select>
+    </div>
 
     <div class="neirong">
         <%
-            List<BlogInfo> blogList = (List<BlogInfo>) request.getAttribute("userAll");
             if (blogList != null && !blogList.isEmpty()) {
                 for (BlogInfo blog : blogList) {
         %>
-        <div class="blog-post">
+        <div class="blog-post" id="blog_<%= blog.getId() %>">
             <h2><%= blog.getName() %></h2>
             <p><%= blog.getInfo() %></p>
             <p>标签： <%= blog.getTag() %></p>
             <p>日期： <%= blog.getDate() %></p>
-
         </div>
         <%
             }
@@ -98,6 +144,22 @@
         %>
     </div>
 </div>
+
+<!-- JavaScript 部分 -->
+<script>
+    // 点击标签时过滤博客条目
+    function filterByTag(tag) {
+        var blogPosts = document.querySelectorAll('.blog-post');
+        for (var i = 0; i < blogPosts.length; i++) {
+            var post = blogPosts[i];
+            var postTag = post.querySelector('p:nth-child(3)').textContent.split('：')[1].trim(); // 获取博客条目的标签
+            if (postTag === tag || tag === 'all') {
+                post.style.display = 'block'; // 显示匹配标签的博客条目
+            } else {
+                post.style.display = 'none'; // 隐藏不匹配标签的博客条目
+            }
+        }
+    }
+</script>
 </body>
 </html>
-
