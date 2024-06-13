@@ -2,6 +2,7 @@ package com.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dao.UserDao;
 import com.dao.UserDaoImpl;
+import com.entity.BlogInfo;
 
 public class DeleteServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,7 +27,10 @@ public class DeleteServlet extends HttpServlet {
         UserDao ud = new UserDaoImpl();
 
         if(ud.delete(userId)){
-            request.getRequestDispatcher("/Searchall").forward(request, response);
+            List<BlogInfo> blogInfoList = ud.getBloginfoAll();
+            request.setAttribute("userAll", blogInfoList);
+            request.getRequestDispatcher("/adminblog.jsp").forward(request, response);
+           // request.getRequestDispatcher("/Searchall").forward(request, response);
         }else{
             response.sendRedirect("index.jsp");
         }

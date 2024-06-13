@@ -84,6 +84,19 @@
             padding: 5px 10px;
             border-radius: 5px;
         }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -91,10 +104,12 @@
     <h1>欢迎来到博客！</h1>
 
     <!-- 发布博客按钮 -->
-    <button onclick="window.location.href = 'write.jsp'">发布博客</button>
+    <button class="btn" onclick="window.location.href = 'write.jsp'">发布博客</button>
 
     <!-- 退出登录按钮 -->
-    <button onclick="window.location.href = 'Login.jsp'">退出登录</button>
+    <button class="btn" onclick="window.location.href = 'Login.jsp'">退出登录</button>
+
+    <button class="btn" onclick="window.location.href = 'AdminLogin.jsp'">管理员登录</button>
 
     <!-- 音乐播放器 -->
     <div class="music">

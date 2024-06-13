@@ -84,6 +84,24 @@
             padding: 5px 10px;
             border-radius: 5px;
         }
+
+        .btn {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #45a049; /* Darker Green */
+        }
     </style>
 </head>
 <body>
@@ -91,15 +109,15 @@
     <h1>欢迎来到博客！</h1>
 
     <!-- 发布博客按钮 -->
-    <button onclick="window.location.href = 'write.jsp'">发布博客</button>
+    <button class="btn" onclick="window.location.href = 'write.jsp'">发布博客</button>
 
     <!-- 管理博客用户表单 -->
     <form action="SearchUser" method="post">
-        <input type="submit" value="管理博客用户">
+        <input class="btn" type="submit" value="管理博客用户">
     </form>
 
     <!-- 退出登录按钮 -->
-    <button onclick="window.location.href = 'Login.jsp'">退出登录</button>
+    <button class="btn" onclick="window.location.href = 'Login.jsp'">退出登录</button>
 
     <!-- 音乐播放器 -->
     <div class="music">
@@ -140,7 +158,7 @@
             <p>日期： <%= blog.getDate() %></p>
             <form action="DeleteServlet" method="post">
                 <input type="hidden" name="id" value="<%=blog.getId()%>">
-                <button type="submit">删除博客</button>
+                <button class="btn" type="submit">删除博客</button>
             </form>
         </div>
         <%

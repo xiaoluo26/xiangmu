@@ -59,12 +59,38 @@
         .no-blog {
             text-align: center;
         }
+
+        /* 新增按钮样式 */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 修改表单按钮的样式 */
+        .btn-form {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>博客管理系统！</h1>
-
 
     <div class="neirong">
         <%
@@ -76,12 +102,11 @@
             <h2>账号:<%= user.getName() %></h2>
             <p>密码:<%= user.getPwd() %></p>
             <form action="DeleteUserServlet" method="post">
-                <input type="hidden" name="id" value=<%=user.getId()%>>
-                <button type="submit">删除用户</button>
+                <input type="hidden" name="id" value="<%=user.getId()%>">
+                <!-- 修改按钮样式 -->
+                <button class="btn-form" type="submit">删除用户</button>
             </form>
-
         </div>
-
         <%
             }
         } else {
@@ -92,7 +117,8 @@
         %>
         <div>
             <form action="Searchall">
-                <input type="submit" value="返回博客">
+                <!-- 修改按钮样式 -->
+                <input class="btn" type="submit" value="返回博客">
             </form>
         </div>
     </div>
